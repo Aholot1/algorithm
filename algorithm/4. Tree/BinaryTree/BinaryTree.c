@@ -17,7 +17,7 @@ void SBT_DestroyNode( SBTNode* Node )
 
 void SBT_DestroyTree( SBTNode* Node )
 {
-    if ( Node == NULL )
+    if ( Node == NULL )//아무것도 없다면 넘기기
         return;
 
     //  왼쪽 하위 트리 소멸 

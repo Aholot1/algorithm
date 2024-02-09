@@ -60,16 +60,16 @@ void ET_PostorderPrintTree( ETNode* Node )
     printf( " %c", Node->Data );
 }
 
-void ET_BuildExpressionTree( char* PostfixExpression, ETNode** Node )
+void ET_BuildExpressionTree( char* PostfixExpression, ETNode** Node ) //트리 방식으로 Node에 빌드// 매개변수는 후위표기로 된 문자열& 노드
 {
-    int  len        = strlen( PostfixExpression );
-    char Token      = PostfixExpression[ len -1 ];
-    PostfixExpression[ len-1 ] = '\0';
+    int  len        = strlen( PostfixExpression ); //수식 길이
+    char Token      = PostfixExpression[ len -1 ]; // 가장 마지막 토큰
+    PostfixExpression[ len-1 ] = '\0';// 마지막토큰 = \0으로 설정
 
-    switch ( Token ) 
+    switch ( Token ) //토큰 인식
     {
         //  연산자인 경우 
-        case '+': case '-': case '*': case '/':
+        case '+': case '-': case '*': case '/': //연산자 집합!
             (*Node) = ET_CreateNode( Token );
             ET_BuildExpressionTree( PostfixExpression, &(*Node)->Right );
             ET_BuildExpressionTree( PostfixExpression, &(*Node)->Left  );
@@ -82,7 +82,7 @@ void ET_BuildExpressionTree( char* PostfixExpression, ETNode** Node )
     }
 }
 
-double ET_Evaluate( ETNode* Tree )
+double ET_Evaluate( ETNode* Tree )// 뿌리를 준다.
 {
     char Temp[2];
     
