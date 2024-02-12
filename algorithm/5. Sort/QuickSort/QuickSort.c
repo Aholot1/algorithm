@@ -7,7 +7,7 @@ void Swap( int* A, int* B )
     *B = Temp;
 }
 
-int Partition( int DataSet[], int Left, int Right )
+int Partition( int DataSet[], int Left, int Right )// 기준보다 작은건 왼쪽 큰건 오른쪽에 정렬
 {
     int First = Left;
     int Pivot = DataSet[First];
@@ -24,8 +24,8 @@ int Partition( int DataSet[], int Left, int Right )
 
         if ( Left < Right )
             Swap( &DataSet[Left], &DataSet[Right]);
-        else
-            break;
+        else//laft가 right보다 크거나 같다면 두 정찰병이 만남 
+            break;// 탈출 
     }
 
     Swap( &DataSet[First], &DataSet[Right] );
